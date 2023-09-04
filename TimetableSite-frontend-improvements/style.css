@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css?family=Recursive:400|Playfair+Display:500');
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#191c1a;
+    --popup: #383A33;
+    --headline:#e1e3e0;
+    --paragraph:#F8FFF8;
+  
+    --primary:#66dbb1;
+    --primaryh:#00513c;
+    --primarytxt:#003828;
+    --primaryhtxt:#84f8cd;
+  
+    --secondary:#cfbdff;
+    --secondaryh:#381d74;
+    --secondarytxt:#4f378c;
+    --secondaryhtxt:#e9ddff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:#F0F3E8;
+    --popup: #e1e3e0;
+    --headline:#383A33;
+    --paragraph:#191A14;
+  
+    --primary:#006c50;
+    --primaryh:#84f8cc;
+    --primarytxt:#ffffff;
+    --primaryhtxt:#002116;
+  
+    --secondary:#6650a4;
+    --secondaryh:#e8ddff;
+    --secondarytxt:#ffffff;
+    --secondaryhtxt:#22005d;
+  }
+} 
+
+:root {
+  --diagonal-pat: linear-gradient(45deg, var(--secondary) 0%, var(--secondary) 5%,transparent 5%, transparent 10%, var(--secondary) 10%, var(--secondary) 15%,transparent 15%,transparent 20%, var(--secondary) 20%, var(--secondary) 25%,transparent 25%,transparent 30%, var(--secondary) 30%, var(--secondary) 35%,transparent 35%,transparent 40%, var(--secondary) 40%, var(--secondary) 45%,transparent 45%,transparent 50%, var(--secondary) 50%, var(--secondary) 55%,transparent 55%,transparent 60%, var(--secondary) 60%, var(--secondary) 65%,transparent 65%,transparent 70%, var(--secondary) 70%, var(--secondary) 75%,transparent 70%,transparent 80%, var(--secondary) 80%, var(--secondary) 85%,transparent 85%,transparent 90%, var(--secondary) 90%, var(--secondary) 95%,transparent 95%);
+  --diagonal-pat-h: linear-gradient(45deg, var(--secondaryhtxt) 0%, var(--secondaryhtxt) 5%,transparent 5%, transparent 10%, var(--secondaryhtxt) 10%, var(--secondaryhtxt) 15%,transparent 15%,transparent 20%, var(--secondaryhtxt) 20%, var(--secondaryhtxt) 25%,transparent 25%,transparent 30%, var(--secondaryhtxt) 30%, var(--secondaryhtxt) 35%,transparent 35%,transparent 40%, var(--secondaryhtxt) 40%, var(--secondaryhtxt) 45%,transparent 45%,transparent 50%, var(--secondaryhtxt) 50%, var(--secondaryhtxt) 55%,transparent 55%,transparent 60%, var(--secondaryhtxt) 60%, var(--secondaryhtxt) 65%,transparent 65%,transparent 70%, var(--secondaryhtxt) 70%, var(--secondaryhtxt) 75%,transparent 70%,transparent 80%, var(--secondaryhtxt) 80%, var(--secondaryhtxt) 85%,transparent 85%,transparent 90%, var(--secondaryhtxt) 90%, var(--secondaryhtxt) 95%,transparent 95%);
+  --diagonal-pat-primary: repeating-linear-gradient(45deg, var(--primary) 0, var(--primary) 10%, transparent 0, transparent 50%);
+  --diagonal-pat-primary-h: repeating-linear-gradient(45deg, var(--primaryhtxt) 0, var(--primaryhtxt) 10%, transparent 0, transparent 50%);
+  --diagonal-pat-txt: linear-gradient(45deg, var(--headline) 0%, var(--headline) 5%,transparent 5%, transparent 10%, var(--headline) 10%, var(--headline) 15%,transparent 15%,transparent 20%, var(--headline) 20%, var(--headline) 25%,transparent 25%,transparent 30%, var(--headline) 30%, var(--headline) 35%,transparent 35%,transparent 40%, var(--headline) 40%, var(--headline) 45%,transparent 45%,transparent 50%, var(--headline) 50%, var(--headline) 55%,transparent 55%,transparent 60%, var(--headline) 60%, var(--headline) 65%,transparent 65%,transparent 70%, var(--headline) 70%, var(--headline) 75%,transparent 70%,transparent 80%, var(--headline) 80%, var(--headline) 85%,transparent 85%,transparent 90%, var(--headline) 90%, var(--headline) 95%,transparent 95%);
+}
+
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  font-size: 100%;
+}
+p {
+  color:var(--paragraph);
+}
+h1 {
+  color:var(--headline);
+}
+
+/* / * Colour picker *  */
+
+
+.color-picker-label {
+  position: relative;
+  text-decoration: none;
+  color:var(--headline);
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0.5rem;
+}
+
+.color-picker-label::after,
+.color-picker-label.crossed::after
+ {
+  content: '';
+  position: absolute;
+  bottom: 30;
+  left: 0;
+  height:0.1em;
+  display:block;
+  background-color:var(--headline);
+  transition: width 0.3s;
+}
+
+.color-picker-label::after {
+  width:0%;
+}
+
+.color-picker-label:hover::after {
+  width:110%;
+}
+
+.color-picker-label.crossed::after {
+  width: 110%;
+}
+
+.color-picker-label.crossed:hover::after {
+  width: 0%;
+}
+
+.color-picker {
+  background: var(--popup);
+  color: var(--paragraph);
+  font-family: 'Recursive', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.pickr {
+  width: fit-content;
+  text-align: center;
+  background: transparent;
+  color:var(--paragraph);
+  border-radius: var(--bs-border-radius-s);
+}
+
+
+.pickr {
+  display:block;
+  border-radius: var(--bs-border-radius-s);
+  padding:0.5rem;
+  transform: scale(0.9);
+  border: 0rem solid var(--headline);
+  transition: border 0.1s;
+  position: relative;
+}
+
+.pickr:hover {
+  border: 0.2rem solid var(--headline);
+}
+
+.color-picker-contain {
+  transition: all 0.2s;
+  background-color:red;
+}
+
+.color-picker-contain.crossed {
+  filter: brightness(0.75);
+  transform: scale(0.97);
+  transition: all 0.2s;
+}
+
+/* Select dropdown */
+select {
+  appearance: none;
+  background-color: var(--bg);
+  border: none;
+  color:var(--primary);
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  font-style: italic;
+}
+.select-lbl {
+  position:relative;
+}
+.select-lbl::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.1em;
+  width:100%;
+  background: linear-gradient(90deg, var(--secondary) 20%, transparent 20px, transparent 70px);
+  background-position: 0px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  animation: underline 750ms ease-in forwards;
+}
+
+@keyframes underline {
+  0% {
+    background-size: 1%;
+  }
+  1% {
+    background-size: 10%;
+  }
+  5% {
+    background-size: 100%;
+    background-position: 10px;
+  }
+  97% {
+    background-position: 300px;
+  }
+  100% {
+    background-position: 600px;
+  }
+}
+
+/* Buttons */
+.form-btn {
+  color:var(--secondary);
+  border-radius: var(--bs-border-radius-s);
+  padding:0.5rem;
+  display:block;
+  position: relative;
+  z-index:1;
+  font-variant: small-caps;
+}
+.form-btn span {
+  display:block;
+  background:var(--bg);
+  border-radius: var(--bs-border-radius-s);
+  padding:0.5rem;
+  transform: scale(1.25);
+  border: thin solid var(--secondary);
+  transition: transform 0.4s;
+}
+
+ .form-btn:hover span {
+  transform: scale(1.25) translate(12px,7px);
+  border: thin solid var(--secondaryhtxt);
+  color:var(--secondaryhtxt);
+} 
+
+.form-btn::after {
+  content:'';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display:block;
+  height:100%;
+  width:100%;
+  background: var(--diagonal-pat);
+  background-size: 3em 3em;
+  opacity: 1;
+  z-index:-1;
+  transition: transform 0.7s;
+  transform: translate(12px,7px);
+}
+
+.form-btn:hover::after {
+  transform: translate(0px,0px);
+}
+
+
+
+body {
+	background-color: var(--bg) !important;
+  color:var(--paragraph);
+  font-family: 'Recursive', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/*table*/
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr th {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 1.3;
+  color:var(--paragraph);
+  font-variant: small-caps;
+}
+
+thead th:first-child {
+  border-inline: none;
+}
+
+thead th {
+  border-inline: var(--bs-border-width) solid var(--paragraph);
+}
+
+tbody th {
+  border-top: var(--bs-border-width) solid var(--paragraph);
+}
+
+td {
+  color:var(--paragraph);
+  border: var(--bs-border-width) solid var(--paragraph);
+  height: 15vh;
+  width: 15vh;
+  max-width: 15vh;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+
+.class-title {
+  font-variant: small-caps;
+  font-weight: bold;
+  display:block;
+  border-bottom: 4px solid var(--paragraph);
+  width: fit-content;
+}
+
+.class-content {
+  position: relative;
+  margin: 0;
+  text-overflow: "-";
+  text-align: right;
+}
+
+.class-slot {
+  width: auto;
+  margin: 0;
+  display: inline-block;
+}
+
+.empty-slot {
+  content: '';
+}
+
+tr:last-child td, tr:last-child th {
+  border-bottom: none;
+}
+
+tr td:last-child, tr th:last-child {
+  border-right: none;
+}
+
+
+.lectureSlot:hover {
+    background-color: aquamarine;
+}
+
+#carouselExample{
+    padding: 60px;
+}
+
+/* Index form*/
+
+/* Style the form */
+#regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  
+  /* Style the input fields */
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 18px;
+    width: 18px;
+    margin: 0 5px;
+    background: var(--diagonal-pat-primary-h);
+    background-size: .4em .4em;
+    border: none;
+    display: inline-block;
+    opacity: 0.5;
+  }
+
+  
+  /* Mark the active step: */
+  .step.active {
+    background: var(--primaryhtxt) !important;
+    opacity: 1;
+    transform: scale(1.3);
+    animation: large 250ms ease-in;
+  }
+
+  @keyframes large {
+    from {
+      transform: scale(1.0);
+    }
+    to {
+      transform: scale(1.3);
+    }
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background: var(--diagonal-pat-primary-h);
+    background-size: .4em .4em;
+    opacity: 1;
+  }
